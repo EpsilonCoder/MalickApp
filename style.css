@@ -1,0 +1,333 @@
+*:not(body) {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.lightmode {
+  --home-bg-color: #f3f3f3;
+  --input-bg-color: #e3e3e3;
+  --input-font-color: black;
+  --todo-bg-color: white;
+  --todo-font-color: black;
+  --plus-logo-color: white;
+  --header-color: rgb(255, 107, 0);
+  --github-fill: black;
+  --github-hover-fill: white;
+  --github-bg: black;
+  --main-bolt-color: black;
+  --glitch-bolt-color: goldenrod;
+  --theme-check-color: var(--header-color);
+  --theme-check-hover-color: white;
+  --theme-check-bg: var(--header-color);
+  --scroll-bar-thumb: rgb(19, 27, 39);
+}
+
+.darkmode {
+  --home-bg-color: #353535;
+  --input-bg-color: #484848;
+  --input-font-color: white;
+  --todo-bg-color: #636363;
+  --todo-font-color: white;
+  --plus-logo-color: #35383a;
+  --header-color: hsl(9, 92%, 70%);
+  --github-fill: white;
+  --github-hover-fill: #000000;
+  --github-bg: white;
+  --glitch-bolt-color: black;
+  --main-bolt-color: goldenrod;
+  --theme-check-bg: white;
+  --theme-check-hover-color: var(--header-color);
+  --theme-check-color: white;
+}
+
+body {
+  height: auto;
+  margin: 0;
+  width: auto;
+  background: var(--home-bg-color);
+  color: var(--home-font-color);
+  user-select: none;
+  --webkit-user-select: none;
+  font-family: "Inter", sans-serif;
+  position: relative;
+  display: grid;
+  align-items: center;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+  background: none;
+}
+
+::-webkit-scrollbar-thumb {
+  background: grey;
+  opacity: 0.5;
+  border-radius: 3px;
+}
+
+#head {
+  background: var(--todo-bg-color);
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: grid;
+  grid-template-columns: 7rem 1fr repeat(2, 4rem);
+  box-shadow: 0px -5px 20px 1px;
+  z-index: 5;
+}
+
+@media only screen and (max-width: 756px) {
+  #head {
+    grid-template-columns: 4rem 1fr repeat(2, 2.5rem);
+  }
+}
+
+#head #logo-icon {
+  /* height: 1.5rem;
+  width: 1.5rem; */
+  /* transform: translateY(10%); */
+  /* fill: var(--header-color); */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  /* background: white; */
+}
+
+#head #logo-icon svg {
+  width: calc(3rem + 5px);
+  height: calc(3rem + 5px);
+  padding: 5px;
+  background: white;
+  border-radius: 4px;
+  cursor: pointer;
+  /* fill: rgba(0, 0, 0, 0.788); */
+  /* position: absolute; */
+  /* fill: var(--main-bolt-color); */
+  /* stroke: hsl(9, 44%, 51%); */
+  /* transform: rotate(180deg); */
+  /* background: rgb(211, 211, 86); */
+}
+/* 
+#head #logo-icon svg:nth-child(1) {
+  fill: var(--glitch-bolt-color);
+  fill: goldenrod;
+  left: 8px;
+  top: 13px;
+}
+
+#head #logo-icon svg:nth-child(2) {
+  fill: var(--glitch-bolt-color);
+  fill: goldenrod;
+  right: 9px;
+  bottom: 14px;
+} */
+
+#head #logo {
+  padding: 1rem;
+  color: var(--header-color);
+  font-family: "Patrick Hand", cursive;
+  font-weight: 700;
+  font-size: 1.9rem;
+  display: flex;
+  align-items: center;
+  margin: auto;
+  cursor: pointer;
+}
+
+#head #logo p {
+  padding-left: 0.5rem;
+  color: var(--header-color);
+}
+
+#head #theme-check,
+#head #github {
+  width: 100%;
+  height: 100%;
+  /* background: #000; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#head #theme-check svg {
+  fill: var(--header-color);
+  width: calc(2rem + 5px);
+  height: calc(2rem + 5px);
+  padding: 5px;
+  border-radius: 4px;
+  cursor: pointer;
+  fill: var(--theme-check-color);
+}
+
+#head #theme-check svg:hover {
+  transition: background 0.5s ease-in, fill 0.5s ease-in;
+  /* background: rgba(255, 150, 74, 0.5); */
+  background: var(--theme-check-bg);
+  fill: var(--theme-check-hover-color);
+}
+
+#head #github svg {
+  width: calc(2rem + 5px);
+  height: calc(2rem + 5px);
+  padding: 5px;
+  border-radius: 4px;
+  cursor: pointer;
+  fill: var(--github-fill);
+}
+
+#head #github svg:hover {
+  transition: background 0.5s ease-in, fill 0.5s ease-in;
+  background: var(--github-bg);
+  fill: var(--github-hover-fill);
+}
+
+#main-container {
+  margin: auto;
+  padding: 1rem;
+  width: 100%;
+  max-width: 700px;
+}
+
+.svg-plus-logo {
+  fill: var(--plus-logo-color);
+}
+
+button {
+  font-family: "Inter", sans-serif;
+  outline: none;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+form {
+  width: 100%;
+  display: grid;
+  grid-template-columns: auto 33px;
+  align-items: center;
+  grid-column-gap: 0.9rem;
+  margin-top: 5.5rem;
+}
+
+form * {
+  border: none;
+  outline: none;
+}
+
+form input {
+  background: var(--input-bg-color);
+  color: var(--input-font-color);
+  border-radius: 13px;
+  padding: 10px 15px 10px 15px;
+  font-size: 0.95rem;
+  font-family: "Inter", sans-serif;
+  width: auto;
+  grid-column-start: 1;
+  grid-column-end: 2;
+}
+
+form button {
+  background: transparent;
+  height: 100%;
+  width: 35px;
+}
+
+form button img {
+  width: 120%;
+  height: 120%;
+  transform: translate(-10%, -8%);
+}
+
+#TODOs {
+  width: auto;
+  height: auto;
+  font-weight: 500;
+  margin-top: 1.7rem;
+  overflow: hidden;
+}
+
+.todo {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  background: var(--todo-bg-color);
+  color: var(--todo-font-color);
+  border-radius: 7px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  position: relative;
+  transition: opacity 0.5s ease-out;
+  overflow: hidden;
+  animation: slide-in 0.8s ease-in-out 1;
+}
+
+@keyframes slide-in {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.todo:hover {
+ /* background: #ffcf734d;*/
+}
+
+.todo-done {
+  opacity: 50%;
+}
+
+.todo-done::after {
+  content: "";
+  height: 2px;
+  width: 100%;
+  background: #000;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  margin: auto;
+  transform: translateY(-50%);
+  animation: cross 1s ease-out 1;
+}
+
+@keyframes cross {
+  from {
+    transform: translateY(-50%) translateX(-100%);
+  }
+  to {
+    transform: translateY(-50%) translateX(0%);
+  }
+}
+
+.todo-delete {
+  transform: translateX(0%);
+  animation: delete 0.8s ease-in-out 1;
+}
+
+@keyframes delete {
+  to {
+    transform: translateX(100%);
+    opacity: 0.2;
+  }
+}
+
+.todo .content {
+  padding: 10px 15px 10px 15px;
+  width: 85.5%;
+  font-size: 1.15rem;
+}
+
+.todo .buttons {
+  position: absolute;
+  right: 5px;
+  margin: auto;
+  transform: translateY(7%);
+}
